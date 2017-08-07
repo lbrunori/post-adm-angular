@@ -1,26 +1,16 @@
-<div class="row">
-  <nav class="container-fluid navbar navbar-default">
-    <div class="container" style="margin-top: 5px; margin-bottom: 5px;">
-      <div class=" media ">
-        <div class="media-left ">
-          <a href="# ">
-      <img class="media-object " src="./../assets/inta_logo.jpg "  alt="... ">
-    </a>
-        </div>
-        <div class="media-body" style="padding-left: 10px; padding-top:10px;">
-          <h3 class="media-heading ">INTA Marcos Juárez</h3>
-          <h4>Equipo de trabajo en producción porcina</h4>
-        </div>
-      </div>
-    </div>
-  </nav>
-</div>
-<div class="row ">
-  <div class="container-fluid col-lg-6 col-lg-offset-3 well " style="margin-top: 50px; ">
-    <app-login></app-login>
+<div class="container-fluid main">
+  <div class="row">
+    <header>
+      <app-header></app-header>
+    </header>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="row">
+    <nav class="navbar navbar-default navbar-fixed-bottom " style="min-height: 25px !important; padding-right: 15px; padding-left:
+      15px; text-align: right; ">
+      <h5>Administración de publicaciones - v1.0</h5>
+    </nav>
   </div>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom " style="min-height: 25px !important; padding-right: 15px; padding-left:
-      15px; text-align: right; ">
-  <h5>Administración de publicaciones - v1.0</h5>
-</nav>

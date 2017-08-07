@@ -1,0 +1,6 @@
+.home{
+  background-color: rgba(248, 248, 248, 0.3);
+  height: -webkit-calc(100vh - 112px);
+  height: -moz-calc(100vh - 112px);
+  height: calc(100vh - 112px);
+}

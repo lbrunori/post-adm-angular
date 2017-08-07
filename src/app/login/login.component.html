@@ -1,19 +1,23 @@
-<form class="form-horizontal" role="form">
-  <div class="form-group">
-    <label for="emailInput" class="col-lg-2 control-label">Email</label>
-    <div class="col-lg-10">
-      <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su email">
+<div class="well container-fluid col-lg-6 col-lg-offset-3" style="margin-top:5%;">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="emailInput" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-10">
+        <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su email" #inputEmail>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="passwordInput" class="col-lg-2 control-label">Contraseña</label>
-    <div class="col-lg-10">
-      <input type="password" class="form-control" id="passwordInput" placeholder="Ingrese su contraseña">
+    <div class="form-group">
+      <label for="passwordInput" class="col-lg-2 control-label"> Contraseña</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="passwordInput" placeholder="Ingrese su contrasenia" #inputContrasenia>
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary pull-right">Iniciar sesión</button>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <button [routerLink]="['home']" type=" submit " class="btn btn-primary pull-right " (click)="iniciarSesion(inputEmail,
+          inputContrasenia) ">
+        Iniciar sesión</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
