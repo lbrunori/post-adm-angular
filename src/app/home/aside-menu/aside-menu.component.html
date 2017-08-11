@@ -1,7 +1,11 @@
 <div class="well aside-nav" style="margin: 0">
-  <ul>
-    <li [routerLink]="['publicaciones']">Publicaciones</li>
-    <li [routerLink]="['usuarios']">Usuarios</li>
-    <li [routerLink]="['']">Cerrar sesión</li>
-  </ul>
+  <div>
+    <a [routerLink]="['publicaciones']"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Publicaciones</a>
+  </div>
+  <div>
+    <a [routerLink]="['usuarios']"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a>
+  </div>
+  <div>
+    <a [routerLink]="['']"><i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión</a>
+  </div>
 </div>

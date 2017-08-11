@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Request } from '@angular/http'
+import { Router } from "@angular/router";
+
+import { AutenticacionService } from './../autenticacion.service';
 
 @Component({
   selector: 'app-login',
@@ -7,14 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('form') loginForm: NgForm;
 
-  constructor() { }
+  constructor(private autenticacionService: AutenticacionService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
-  iniciarSesion(inputEmail: HTMLInputElement, inputContrasenia: HTMLInputElement): void {
-    console.log(inputEmail.value);
-    console.log(inputContrasenia.value);
+  onSubmit(): void {
+    console.log(this.loginForm.value.email)
+    console.log(this.loginForm.value.password)
+    this.autenticacionService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe((res) => {
+        localStorage.setItem('inta-token', res.token);
+        this.router.navigate(['home']);
+      }, (err) => {
+        console.log(err);
+      })
   }
 }
