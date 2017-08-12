@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value.email)
-    console.log(this.loginForm.value.password)
     this.autenticacionService.login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe((res) => {
         localStorage.setItem('inta-token', res.token);

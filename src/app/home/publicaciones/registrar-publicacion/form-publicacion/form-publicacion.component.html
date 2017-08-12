@@ -1,0 +1,27 @@
+<div class="well container-fluid" style="margin-top: 10px;">
+  <form class="" role="form" (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" id="titulo" placeholder="Ingrese el título" [ngModel]="publicacionInput.titulo" name="titulo">
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label>
+      <input [ngModel]="publicacionInput.descripcion" name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingrese una breve descripción de la noticia">
+    </div>
+    <div class="form-group">
+      <label for="imagenPortada">Imagen de portada</label>
+    </div>
+    <div class="form-group">
+      <label for="textarea">Contenido</label>
+      <textarea [ngModel]="publicacionInput.contenido" name="contenido" class="form-control" rows="5" id="comment"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="sel1">Tipo de publicación</label>
+      <select class="form-control" id="sel1">
+        <option>{{publicacionInput.tipoPublicacion.nombre}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">
+      <i class="fa fa-bookmark" aria-hidden="true"></i> Guardar</button>
+  </form>
+</div>

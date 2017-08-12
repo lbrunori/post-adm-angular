@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row" style="border-bottom: 1px solid lightgray">
+    <h2>Publicación</h2>
+  </div>
+  <div class="row" style="margin-top: 15px; margin-right: 25px">
+    <button class="btn btn-danger pull-right" [routerLink]="['publicaciones']"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+  </div>
+  <app-form-publicacion [publicacionInput]="publicacion" (submitted)="updatePublicacion($event)"></app-form-publicacion>
+</div>
