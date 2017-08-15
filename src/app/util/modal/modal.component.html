@@ -1,0 +1,15 @@
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{modalConfig.titulo}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+  </div>
+  <div class="modal-body">
+    {{modalConfig.cuerpo}}
+  </div>
+  <div class="modal-footer">
+    <button *ngIf="modalConfig.botonAceptar" class="btn btn-success pull-right" (click)="onAceptar()" style="margin-left:10px">Aceptar</button>
+    <button *ngIf="modalConfig.botonCancelar" class="btn btn-danger pull-right" (click)="onCancelar()">Cancelar</button>
+  </div>
+</template>

@@ -31,7 +31,7 @@ export class FormPublicacionComponent implements OnInit {
       uploaderForm.append('contenido', this.form.value.contenido);
       uploaderForm.append('descripcion', this.form.value.descripcion);
       uploaderForm.append('titulo', this.form.value.titulo);
-      uploaderForm.append('tipoPublicacion', this.form.value.tipoPublicacion);
+      uploaderForm.append('tipoPublicacion', JSON.stringify(this.form.value.tipoPublicacion, undefined, 2));
     };
   }
 

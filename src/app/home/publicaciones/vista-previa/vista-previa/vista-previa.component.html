@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="row" style="margin-top: 15px; margin-right: 25px">
+    <button class="btn btn-danger pull-right" [routerLink]="['']"><i class="fa fa-times" aria-hidden="true"></i> Volver</button>
+  </div>
   <section class="main row">
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <strong>
@@ -9,7 +12,7 @@
       </p>
       <div class="container-fluid row">
         <br>
-        <img alt="" class="img-responsive col-lg-6 col-lg-offset-3">
+        <img [src]="publicacion.imagenPortadaBase64" alt="" class="img-responsive col-lg-6 col-lg-offset-3">
         <br>
       </div>
       <div class="container-fluid">

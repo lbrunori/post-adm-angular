@@ -22,8 +22,8 @@
         <option *ngFor="let tipo of tiposPublicacionInput" [ngValue]="tipo" >{{tipo.nombre}}</option>
       </select>
     </div>
-    <button type="button" class="btn btn-success btn-s" (click)="onSubmit()" [disabled]="!uploader.getNotUploadedItems().length">
-     <span class="glyphicon glyphicon-upload"></span> Upload all
+    <button type="button" class="btn btn-primary pull-right" (click)="onSubmit()" [disabled]="!uploader.getNotUploadedItems().length">
+     <span class="fa fa-bookmark"></span> Guardar
  </button><br />
   </form>
 </div>

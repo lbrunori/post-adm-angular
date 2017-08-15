@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
+import { ModalModule } from 'ngx-bootstrap';
 
+import { AlertModule } from 'ngx-bootstrap';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +25,8 @@ import { TiposPublicacionService } from './home/publicaciones/tipos-publicacion.
 import { TiposPublicacionResolverService } from './home/publicaciones/tipos-publicacion-resolver.service';
 import { VistaPreviaComponent } from './home/publicaciones/vista-previa/vista-previa/vista-previa.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import { ModalComponent } from './util/modal/modal.component';
+
 
 const appRoutes: Routes = [
   {
@@ -78,13 +82,15 @@ const appRoutes: Routes = [
     FormPublicacionComponent,
     ConsultarPublicacionComponent,
     VistaPreviaComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule
+    HttpModule,
+    ModalModule.forRoot()
   ],
   providers: [AutenticacionService, PublicacionService, PublicacionResolverService, TiposPublicacionResolverService, TiposPublicacionService],
   bootstrap: [AppComponent]
