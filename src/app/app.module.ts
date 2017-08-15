@@ -5,7 +5,6 @@ import { FormsModule } from "@angular/forms";
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http'
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +19,10 @@ import { FormPublicacionComponent } from './home/publicaciones/registrar-publica
 import { ConsultarPublicacionComponent } from './home/publicaciones/consultar-publicacion/consultar-publicacion.component'
 import { PublicacionService } from './home/publicaciones/publicacion.service';
 import { PublicacionResolverService } from './home/publicaciones/publicacion-resolver.service';
+import { TiposPublicacionService } from './home/publicaciones/tipos-publicacion.service';
+import { TiposPublicacionResolverService } from './home/publicaciones/tipos-publicacion-resolver.service';
+import { VistaPreviaComponent } from './home/publicaciones/vista-previa/vista-previa/vista-previa.component';
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 const appRoutes: Routes = [
   {
@@ -42,11 +45,18 @@ const appRoutes: Routes = [
       path: 'publicaciones/nueva-publicacion',
       component: RegistrarPublicacionComponent,
       resolve: {
-
+        tiposPublicacion: TiposPublicacionResolverService
       }
     }, {
       path: 'publicaciones/consultar-publicacion/:id',
       component: ConsultarPublicacionComponent,
+      resolve: {
+        publicacion: PublicacionResolverService,
+        tiposPublicacion: TiposPublicacionResolverService
+      }
+    }, {
+      path: 'publicaciones/vista-previa/:id',
+      component: VistaPreviaComponent,
       resolve: {
         publicacion: PublicacionResolverService
       }
@@ -66,16 +76,17 @@ const appRoutes: Routes = [
     PrincipalComponent,
     RegistrarPublicacionComponent,
     FormPublicacionComponent,
-    ConsultarPublicacionComponent
+    ConsultarPublicacionComponent,
+    VistaPreviaComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule,
-    Ng2SmartTableModule
+    HttpModule
   ],
-  providers: [AutenticacionService, PublicacionService, PublicacionResolverService],
+  providers: [AutenticacionService, PublicacionService, PublicacionResolverService, TiposPublicacionResolverService, TiposPublicacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,9 @@
-import { PublicacionService } from '../publicacion.service';
 import { Component, OnInit } from '@angular/core';
+import { Data, ActivatedRoute } from '@angular/router';
+
+import { PublicacionService } from '../publicacion.service';
 import { Publicacion } from '../publicacion.model';
+import { TipoPublicacion } from './../tipos-publicacion.model';
 
 @Component({
   selector: 'app-registrar-publicacion',
@@ -10,11 +13,16 @@ import { Publicacion } from '../publicacion.model';
 export class RegistrarPublicacionComponent implements OnInit {
 
   publicacion: Publicacion;
+  tiposPublicacion: TipoPublicacion;
 
-  constructor(private publicacionService: PublicacionService) { }
+  constructor(private route: ActivatedRoute, private publicacionService: PublicacionService) { }
 
   ngOnInit() {
     this.publicacion = new Publicacion({}, new Date(), '', '', '', {});
+    this.route.data
+      .subscribe((data: Data) => {
+        this.tiposPublicacion = data.tiposPublicacion;
+      })
   }
 
   savePublicacion(publicacion: Publicacion) {

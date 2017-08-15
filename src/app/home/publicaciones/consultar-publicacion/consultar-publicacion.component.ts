@@ -1,3 +1,4 @@
+import { TipoPublicacion } from '../tipos-publicacion.model';
 import { Publicacion } from '../publicacion.model';
 import { PublicacionService } from '../publicacion.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +12,7 @@ import { ActivatedRoute, Data } from '@angular/router';
 export class ConsultarPublicacionComponent implements OnInit {
 
   publicacion: Publicacion;
+  tiposPublicacion: TipoPublicacion;
 
   constructor(private route: ActivatedRoute, private servicioPublicacion: PublicacionService) {
   }
@@ -19,11 +21,13 @@ export class ConsultarPublicacionComponent implements OnInit {
     this.route.data
       .subscribe((data: Data) => {
         this.publicacion = data.publicacion;
+        this.tiposPublicacion = data.tiposPublicacion;
       })
+
   }
 
   updatePublicacion(publicacion: Publicacion) {
-    this.servicioPublicacion.savePublicacion(publicacion)
+    this.servicioPublicacion.updatePublicacion(publicacion)
       .subscribe((resp) => {
         console.log(resp)
       }, (err) => {

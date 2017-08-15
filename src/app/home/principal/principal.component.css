@@ -1,8 +1,28 @@
-img {
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-  opacity: 0.2;
-  margin: 0 auto;
-  display: block;
-  margin-top: 6%;
+@media(min-width:10px){
+  img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.2;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20%;
+    max-width: 240px;
+    max-height: 240px;
+  }
+
+}
+
+
+@media(min-width:768px){
+  img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity: 0.2;
+    margin: 0 auto;
+    display: block;
+    margin-top: 6%;
+    max-width: 360px;
+    max-height: 360px;
+  }
+
 }

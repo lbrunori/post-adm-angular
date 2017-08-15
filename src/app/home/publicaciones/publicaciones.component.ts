@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Publicacion } from './publicacion.model';
 import { PublicacionService } from './publicacion.service';
-import { _ } from 'lodash';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-publicaciones',
@@ -25,8 +25,10 @@ export class PublicacionesComponent implements OnInit {
   }
 
   deletePublicacion(id: string) {
+    console.log(_)
     this.publicacionService.deletePublicacion(id)
       .subscribe((resp) => {
+        console.log(this.publicaciones);
         _.remove(this.publicaciones, (elem) => {
           return elem._id === id;
         })

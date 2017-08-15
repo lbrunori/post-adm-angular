@@ -29,13 +29,17 @@ export class PublicacionService {
   }
 
   deletePublicacion(id) {
-    return this.http.delete(`${environment.URL_SERVIDOR}/publicaciones/${id}`, { headers: this.headers })
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
+    return this.http.delete(`${environment.URL_SERVIDOR}/publicaciones/${id}`, { headers: this.headers });
   }
 
   savePublicacion(publicacion: Publicacion) {
     return this.http.post(`${environment.URL_SERVIDOR}/publicaciones`, publicacion, { headers: this.headers })
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  updatePublicacion(publicacion: Publicacion) {
+    return this.http.put(`${environment.URL_SERVIDOR}/publicaciones`, publicacion, { headers: this.headers })
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }

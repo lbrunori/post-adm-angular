@@ -1,0 +1,31 @@
+<div class="container">
+  <section class="main row">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <strong>
+        <h2>{{publicacion.titulo}}</h2>
+      </strong>
+      <p>
+        {{publicacion.descripcion}}
+      </p>
+      <div class="container-fluid row">
+        <br>
+        <img alt="" class="img-responsive col-lg-6 col-lg-offset-3">
+        <br>
+      </div>
+      <div class="container-fluid">
+        <br>
+        <div>
+          <p ng-bind-html="vm.trustAsHtml(parrafo)">
+            {{publicacion.contenido}}
+          </p>
+        </div>
+      </div>
+      <div class="container">
+        <br>
+        <p style="word-wrap: break-word;">
+          Fuente :
+        </p>
+      </div>
+    </article>
+  </section>
+</div>

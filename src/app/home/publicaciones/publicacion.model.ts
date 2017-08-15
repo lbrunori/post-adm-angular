@@ -1,5 +1,6 @@
 export class Publicacion {
 
+  _id: string;
   creador: Object;
   fechaCreacion: Date;
   fechaFinalizacion: Date;
