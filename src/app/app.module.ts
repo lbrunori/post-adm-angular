@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
 
-import { AlertModule } from 'ngx-bootstrap';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
@@ -26,6 +26,7 @@ import { TiposPublicacionResolverService } from './home/publicaciones/tipos-publ
 import { VistaPreviaComponent } from './home/publicaciones/vista-previa/vista-previa/vista-previa.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { ModalComponent } from './util/modal/modal.component';
+import { LimitToPipe } from './util/limit-to.pipe';
 
 
 const appRoutes: Routes = [
@@ -83,14 +84,17 @@ const appRoutes: Routes = [
     ConsultarPublicacionComponent,
     VistaPreviaComponent,
     FileSelectDirective,
-    ModalComponent
+    ModalComponent,
+    LimitToPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [AutenticacionService, PublicacionService, PublicacionResolverService, TiposPublicacionResolverService, TiposPublicacionService],
   bootstrap: [AppComponent]

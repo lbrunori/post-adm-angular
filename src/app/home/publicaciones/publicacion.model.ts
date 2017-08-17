@@ -10,6 +10,7 @@ export class Publicacion {
   descripcion: String;
   contenido: String;
   tipoPublicacion: Object;
+  fuente: String;
 
   constructor(creador: Object, fechaCreacion: Date,
     titulo: string, descripcion: string,

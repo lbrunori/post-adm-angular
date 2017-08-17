@@ -3,7 +3,8 @@
     <h2>Nueva publicación</h2>
   </div>
   <div class="row" style="margin-top: 15px; margin-right: 25px">
-    <button class="btn btn-danger pull-right" [routerLink]="['']"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+    <button class="btn btn-danger pull-right" [routerLink]="['..']"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
   </div>
-  <app-form-publicacion [tiposPublicacionInput]="tiposPublicacion" [publicacionInput]="publicacion" (submitted)="savePublicacion($event)"></app-form-publicacion>
+  <app-form-publicacion #form [tiposPublicacionInput]="tiposPublicacion" [publicacionInput]="publicacion" (submitted)="savePublicacion($event)"></app-form-publicacion>
 </div>
+<app-modal #modal></app-modal>

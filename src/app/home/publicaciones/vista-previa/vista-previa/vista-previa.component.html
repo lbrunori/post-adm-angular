@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row" style="margin-top: 15px; margin-right: 25px">
-    <button class="btn btn-danger pull-right" [routerLink]="['']"><i class="fa fa-times" aria-hidden="true"></i> Volver</button>
+    <button class="btn btn-danger pull-right" [routerLink]="['../..']"><i class="fa fa-times" aria-hidden="true"></i> Volver</button>
   </div>
   <section class="main row">
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -25,8 +25,8 @@
       </div>
       <div class="container">
         <br>
-        <p style="word-wrap: break-word;">
-          Fuente :
+        <p style="word-wrap: break-word;" *ngIf="publicacion.fuente">
+          Fuente : {{ publicacion.fuente}}
         </p>
       </div>
     </article>

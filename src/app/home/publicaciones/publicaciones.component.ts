@@ -36,7 +36,7 @@ export class PublicacionesComponent implements OnInit {
   }
 
   mostrarModalConfirmacion(id: string) {
-    this.modal.openModalWithData(id);
+    this.modal.openModalWithData(this.modalConfig, id);
   }
 
   deletePublicacion(id) {

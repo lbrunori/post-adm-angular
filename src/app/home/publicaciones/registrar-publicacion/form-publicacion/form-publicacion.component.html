@@ -2,25 +2,63 @@
   <form class="" role="form" #form="ngForm">
     <div class="form-group">
       <label for="titulo">Título</label>
-      <input type="text" class="form-control" id="titulo" placeholder="Ingrese el título" [ngModel]="publicacionInput.titulo" name="titulo">
+      <input type="text" required [minlength]="5" [maxlength]="250" class="form-control" id="titulo" placeholder="Ingrese el título de la publicación"
+        [ngModel]="publicacionInput.titulo" name="titulo" #titulo="ngModel">
+      <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched) ">
+        <span class="help-block" *ngIf="titulo.hasError('minlength')">El título debe tener más de 5 caracteres.</span>
+        <span class="help-block" *ngIf="titulo.hasError('maxlength')">El título debe tener menos de 250 caracteres.</span>
+        <span class="help-block" *ngIf="titulo.hasError('required')">El título es requerido.</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="descripcion">Subtítulo</label>
-      <input [ngModel]="publicacionInput.descripcion" name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingrese una breve descripción de la noticia">
+      <input [ngModel]="publicacionInput.descripcion" name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingrese una breve descripción de la publicación"
+        [minlength]="10" [maxlength]="255" #fuente="ngModel">
+      <div *ngIf="fuente.invalid && (fuente.dirty || fuente.touched) ">
+        <span class="help-block" *ngIf="fuente.hasError('minlength')">La fuente debe tener más de 5 caracteres.</span>
+        <span class="help-block" *ngIf="fuente.hasError('maxlength')">La fuente debe tener menos de 250 caracteres.</span>
+      </div>
+    </div>
+    <div class="container-fluid" style="display:block" *ngIf="publicacionInput.imagenPortadaBase64">
+      <div class="col-lg-6 col-lg-offset-3">
+        <img [src]="publicacionInput.imagenPortadaBase64" alt="" class="img-responsive">
+      </div>
     </div>
     <div class="form-group">
       <label for="imagenPortada">Imagen de portada</label>
-      <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+      <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" accept="image/png,image/jpg,image/jpeg"
+        placeholder="Seleccione la imagen de portada" />
     </div>
-    <div class="form-group">
-      <label for="textarea">Contenido</label>
-      <textarea [ngModel]="publicacionInput.contenido" name="contenido" class="form-control" rows="5" id="comment"></textarea>
+    <div class="row">
+      <div class="form-group">
+        <div class="container-fluid">
+          <label for="textarea">Contenido</label>
+          <div [froalaEditor]="options" [ngModel]="publicacionInput.contenido" name="contenido" id="comment" #contenido="ngModel" required
+            [minlength]="10" ngModel></div>
+          <div *ngIf="contenido.invalid && (contenido.dirty || contenido.touched) ">
+            <span class="help-block" *ngIf="contenido.hasError('minlength')">El contenido debe tener más de 5 caracteres.</span>
+            <span class="help-block" *ngIf="contenido.hasError('required')">El contenido es requerido.</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="sel1">Tipo de publicación</label>
-      <select class="form-control" [(ngModel)]="publicacionInput.tipoPublicacion" name="tipoPublicacion">
-        <option *ngFor="let tipo of tiposPublicacionInput" [ngValue]="tipo" >{{tipo.nombre}}</option>
+      <select class="form-control" name="tipoPublicacion" ngModel #tipoPub="ngModel" required [(ngModel)]="publicacionInput.tipoPublicacion.nombre">
+        <option *ngFor="let tipo of tiposPublicacionInput" [ngValue]="tipo">{{tipo.nombre}}</option>
       </select>
+      <div *ngIf="tipoPub.invalid && (tipoPub.dirty || tipoPub.touched) ">
+        <span class="help-block" *ngIf="tipoPub.hasError('required')">El tipo de publicación es requerido.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fuente">Fuente</label>
+      <input [ngModel]="publicacionInput.fuente" name="fuente" type="text" class="form-control" id="fuente" placeholder="Ingrese la fuente de la publicación"
+        [minlength]="10" [maxlength]="255" #subtitulo="ngModel">
+      <div *ngIf="subtitulo.invalid && (subtitulo.dirty || subtitulo.touched) ">
+        <span class="help-block" *ngIf="subtitulo.hasError('minlength')">El subtítulo debe tener más de 5 caracteres.</span>
+        <span class="help-block" *ngIf="subtitulo.hasError('maxlength')">El subtítulo debe tener menos de 250 caracteres.</span>
+      </div>
     </div>
     <button type="button" class="btn btn-primary pull-right" (click)="onSubmit()" [disabled]="!uploader.getNotUploadedItems().length">
      <span class="fa fa-bookmark"></span> Guardar

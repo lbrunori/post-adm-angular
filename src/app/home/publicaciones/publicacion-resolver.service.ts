@@ -14,6 +14,7 @@ interface Publicacion {
   descripcion: String;
   contenido: String;
   tipoPublicacion: Object;
+  fuente: String;
 }
 
 @Injectable()

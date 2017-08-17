@@ -11,7 +11,7 @@ import { ModalConfig } from './modalConfig.model';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() modalConfig: ModalConfig;
+  modalConfig: ModalConfig;
   @Output() esCancelar: EventEmitter<any> = new EventEmitter<any>();
   @Output() esAceptar: EventEmitter<any> = new EventEmitter<any>();
 
@@ -23,13 +23,15 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  openModal() {
+  openModal(modalConfig: ModalConfig) {
+    this.modalConfig = modalConfig;
     this.modalRef = this.modalService.show(this.template);
   }
 
-  openModalWithData(comodin: any) {
+  openModalWithData(modalConfig: ModalConfig, comodin: any) {
+    this.modalConfig = modalConfig;
     this.modalConfig.objetoDelPadre = comodin;
-    this.openModal();
+    this.openModal(this.modalConfig);
   }
 
   onAceptar() {

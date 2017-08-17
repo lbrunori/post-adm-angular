@@ -1,11 +1,11 @@
-<div class="well aside-nav" style="margin: 0">
+<div class="container-fluid aside-nav" style="margin: 0; padding: 6% 7%">
   <div>
-    <a [routerLink]="['publicaciones']"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Publicaciones</a>
+    <a [routerLink]="['/home/publicaciones']"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Publicaciones</a>
   </div>
   <div>
-    <a [routerLink]="['usuarios']"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a>
+    <a [routerLink]="['/home/usuarios']"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a>
   </div>
   <div>
-    <a (click)="cerrarSesion()"><i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión</a>
+    <a (click)="cerrarSesion()" style="cursor: pointer"><i class="fa fa-power-off" aria-hidden="true"></i> Cerrar sesión</a>
   </div>
 </div>

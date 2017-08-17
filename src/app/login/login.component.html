@@ -3,19 +3,30 @@
     <div class="form-group">
       <label for="emailInput" class="col-lg-2 control-label">Email</label>
       <div class="col-lg-10">
-        <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su email" required email ngModel name="email">
+        <input type="email" class="form-control" id="emailInput" placeholder="Ingrese su email" required email ngModel name="email"
+          [minlength]="4" [maxlength]="100" #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched) ">
+          <span class="help-block" *ngIf="email.hasError('minlength')">El email debe tener más de 4 caracteres.</span>
+          <span class="help-block" *ngIf="email.hasError('maxlength')">El email debe tener menos de 100 caracteres.</span>
+          <span class="help-block" *ngIf="email.hasError('required')">El email es requerido.</span>
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="passwordInput" class="col-lg-2 control-label"> Contraseña</label>
       <div class="col-lg-10">
         <input type="password" class="form-control" id="passwordInput" placeholder="Ingrese su contrasenia" ngModel name="password"
-          required>
+          #password="ngModel" required [minlength]="6" [maxlength]="50">
+        <div *ngIf="password.invalid && (password.dirty || password.touched) ">
+          <span class="help-block" *ngIf="password.hasError('minlength')">La contraseña debe tener más de 6 caracteres.</span>
+          <span class="help-block" *ngIf="password.hasError('maxlength')">La contraseña debe tener menos de 100 caracteres.</span>
+          <span class="help-block" *ngIf="password.hasError('required')">La contraseña es requerida.</span>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-lg-offset-2 col-lg-10">
-        <button [disabled]="!form.valid" type=" submit " class="btn btn-primary pull-right ">
+    <div class="form-group ">
+      <div class="col-lg-offset-2 col-lg-10 ">
+        <button [disabled]="!form.valid " type="submit" class="btn btn-primary pull-right ">
         Iniciar sesión</button>
       </div>
     </div>

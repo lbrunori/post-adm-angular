@@ -19,9 +19,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let publicacion of publicaciones">
-            <td>{{publicacion.titulo}}</td>
-            <td>{{publicacion.creador.nombre}}</td>
-            <td>{{publicacion.fechaCreacion}}</td>
+            <td>{{publicacion.titulo | limitTo: 30}}</td>
+            <td>{{publicacion.creador.nombre + ' ' + publicacion.creador.apellido}}</td>
+            <td>{{publicacion.fechaCreacion | date:"MM/dd/yy"}}</td>
             <td>{{publicacion.tipoPublicacion.nombre}}</td>
             <td>
               <button class="btn btn-success" [routerLink]="['consultar-publicacion', publicacion._id]"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -37,4 +37,4 @@
     <p>No hay publicaciones registradas</p>
   </div>
 </div>
-<app-modal #modal [modalConfig]="modalConfig" (esAceptar)="deletePublicacion($event)"></app-modal>
+<app-modal #modal (esAceptar)="deletePublicacion($event)"></app-modal>
