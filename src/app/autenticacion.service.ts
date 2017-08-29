@@ -19,6 +19,18 @@ export class AutenticacionService {
   }
 
   logout() {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-auth': localStorage.getItem('inta-token')
+    })
+    return this.http.delete(environment.URL_SERVIDOR + '/usuarios/me/logout', { headers: headers });
+  }
 
+  userMe() {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'x-auth': localStorage.getItem('inta-token')
+    })
+    return this.http.get(environment.URL_SERVIDOR + '/usuarios/me', { headers: headers });
   }
 }

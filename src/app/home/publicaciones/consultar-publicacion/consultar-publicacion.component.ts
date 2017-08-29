@@ -22,17 +22,9 @@ export class ConsultarPublicacionComponent implements OnInit {
       .subscribe((data: Data) => {
         this.publicacion = data.publicacion;
         this.tiposPublicacion = data.tiposPublicacion;
+
       })
 
-  }
-
-  updatePublicacion(publicacion: Publicacion) {
-    this.servicioPublicacion.updatePublicacion(publicacion)
-      .subscribe((resp) => {
-        console.log(resp)
-      }, (err) => {
-        console.error(err);
-      })
   }
 
 }

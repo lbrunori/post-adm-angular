@@ -1,11 +1,11 @@
 export class TipoPublicacion {
 
   nombre: string;
-  nombreDescriptivo: string;
+  _id: string;
 
-  constructor(nombre: string, nombreDescriptivo: string) {
+  constructor(nombre: string, _id: string) {
     this.nombre = nombre;
-    this.nombreDescriptivo = nombreDescriptivo;
+    this._id = _id;
   }
 
 }

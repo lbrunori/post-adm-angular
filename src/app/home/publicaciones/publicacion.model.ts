@@ -1,3 +1,5 @@
+import { TipoPublicacion } from './tipos-publicacion.model';
+
 export class Publicacion {
 
   _id: string;
@@ -9,12 +11,12 @@ export class Publicacion {
   titulo: String;
   descripcion: String;
   contenido: String;
-  tipoPublicacion: Object;
+  tipoPublicacion: TipoPublicacion;
   fuente: String;
 
   constructor(creador: Object, fechaCreacion: Date,
     titulo: string, descripcion: string,
-    contenido: string, tipoPublicacion: Object) {
+    contenido: string, tipoPublicacion: TipoPublicacion) {
     this.creador = creador;
     this.fechaCreacion = fechaCreacion;
     this.titulo = titulo;

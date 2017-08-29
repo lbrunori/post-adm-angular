@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth-guard.service';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthGuard],
     children: [{
       path: '',
       component: PrincipalComponent
@@ -96,7 +98,12 @@ const appRoutes: Routes = [
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
-  providers: [AutenticacionService, PublicacionService, PublicacionResolverService, TiposPublicacionResolverService, TiposPublicacionService],
+  providers: [AutenticacionService,
+    PublicacionService,
+    PublicacionResolverService,
+    TiposPublicacionResolverService,
+    TiposPublicacionService,
+    AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

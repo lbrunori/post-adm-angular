@@ -3,7 +3,7 @@
     <button class="btn btn-danger pull-right" [routerLink]="['../..']"><i class="fa fa-times" aria-hidden="true"></i> Volver</button>
   </div>
   <section class="main row">
-    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <article class="container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <strong>
         <h2>{{publicacion.titulo}}</h2>
       </strong>
@@ -12,18 +12,18 @@
       </p>
       <div class="container-fluid row">
         <br>
-        <img [src]="publicacion.imagenPortadaBase64" alt="" class="img-responsive col-lg-6 col-lg-offset-3">
+        <img [src]="publicacion.imagenPortada" alt="" class="img-responsive col-lg-6 col-lg-offset-3">
         <br>
       </div>
       <div class="container-fluid">
         <br>
         <div>
-          <p ng-bind-html="vm.trustAsHtml(parrafo)">
-            {{publicacion.contenido}}
+          <p [innerHTML]="publicacion.contenido" style=" word-wrap: break-word;">
+
           </p>
         </div>
       </div>
-      <div class="container">
+      <div class="container-fluid">
         <br>
         <p style="word-wrap: break-word;" *ngIf="publicacion.fuente">
           Fuente : {{ publicacion.fuente}}
