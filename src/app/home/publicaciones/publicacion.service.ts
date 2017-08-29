@@ -52,9 +52,8 @@ export class PublicacionService {
       'Content-Type': 'application/json',
       'x-auth': localStorage.getItem('inta-token')
     })
-    return this.http.put(`${environment.URL_SERVIDOR}/publicaciones`, publicacion, { headers: headers })
+    return this.http.put(`${environment.URL_SERVIDOR}/publicaciones/${publicacion._id}`, publicacion, { headers: headers })
       .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
   }
 
 }

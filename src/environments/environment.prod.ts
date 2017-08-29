@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  URL_SERVIDOR: 'http://localhost:3000'
+  URL_SERVIDOR: 'https://pure-badlands-27978.herokuapp.com/api'
 };

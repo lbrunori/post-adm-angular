@@ -13,7 +13,7 @@ import _ from 'lodash';
   templateUrl: './form-publicacion.component.html',
   styleUrls: ['./form-publicacion.component.css']
 })
-export class FormPublicacionComponent implements OnInit, AfterViewInit {
+export class FormPublicacionComponent implements OnInit {
 
   @Input() publicacionInput: Publicacion;
   @Input() tiposPublicacionInput: TipoPublicacion;
@@ -67,6 +67,10 @@ export class FormPublicacionComponent implements OnInit, AfterViewInit {
         if (this.esNuevo) {
           this.form.reset();
           this.publicacionInput.contenido = "";
+          this.uploadElRef.nativeElement.value = ''
+        } else {
+          let resp = JSON.parse(response);
+          this.publicacionInput.imagenPortada = resp.imagenPortada;
         }
       } else {
         this.modalConfig = new ModalConfig("Error al ejecutar la operación",
@@ -80,12 +84,27 @@ export class FormPublicacionComponent implements OnInit, AfterViewInit {
 
   onActualizar() {
     if (this.uploadElRef.nativeElement.value === '') {
-      // this.servicioPublicacion.updatePublicacion()
-      //   .subscribe((resp) => {
-      //     console.log(resp)
-      //   }, (err) => {
-      //     console.error(err);
-      //   })
+      let publicacion: Publicacion = new Publicacion({}, new Date(),
+        this.form.value.titulo,
+        this.form.value.descripcion,
+        this.form.value.contenido,
+        this.form.value.tipoPublicacion)
+      publicacion.fuente = this.form.value.fuente;
+      publicacion._id = this.publicacionInput._id;
+      this.servicioPublicacion.updatePublicacion(publicacion)
+        .subscribe((resp) => {
+          console.log(resp);
+          this.modalConfig = new ModalConfig("Se ha registrado la operación con éxito",
+            "La operación ha sido ejecutada con éxito",
+            true, false);
+          this.modal.openModal(this.modalConfig);
+        }, (err) => {
+          console.error(err);
+          this.modalConfig = new ModalConfig("Error al ejecutar la operación",
+            "No se pudo realizar la operación solicitada.",
+            true, false);
+          this.modal.openModal(this.modalConfig);
+        })
     } else {
       this.uploader.uploadAll();
     }
@@ -96,10 +115,4 @@ export class FormPublicacionComponent implements OnInit, AfterViewInit {
     this.uploader.uploadAll()
   }
 
-
-  ngAfterViewInit() {
-    this.uploader.onAfterAddingFile = (item => {
-      this.uploadElRef.nativeElement.value = ''
-    });
-  }
 }
